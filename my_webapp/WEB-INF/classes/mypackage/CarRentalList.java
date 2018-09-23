@@ -23,28 +23,30 @@ public class CarRentalList extends HttpServlet {
     res.setContentType("text/html");
     PrintWriter out = res.getWriter();
     String nombre = req.getParameter("userid");
+    String password = req.getParameter("password");
     out.println("<html>");
 
     JSONParser parser = new JSONParser();
     JSONObject obj = null;
-
-    try {
-    Object obj2 = parser.parse(new FileReader("./test.json"));
-       obj = (JSONObject) obj2;
-       JSONArray list = (JSONArray) obj.get("messages");
-    Iterator<String> iterator = list.iterator();
-    while(iterator.hasNext()){
-      if (cont % 5 == 0) {
-        out.println("<br><br>");
+    if (nombre.equals("pti")) and password.equals("pti")){
+      try {
+        Object obj2 = parser.parse(new FileReader("./test.json"));
+           obj = (JSONObject) obj2;
+           JSONArray list = (JSONArray) obj.get("messages");
+        Iterator<String> iterator = list.iterator();
+        while(iterator.hasNext()){
+          if (cont % 5 == 0) {
+            out.println("<br><br>");
+          }
+                out.println("<br> <big>" + iterator.next() + "</big>");
+          cont++;
+            }
+        out.println("</html>");
       }
-            out.println("<br> <big>" + iterator.next() + "</big>");
-      cont++;
-        }
-    out.println("</html>");
-}
-catch (ParseException e) {
+      catch (ParseException e) {
             e.printStackTrace();
         }
+    }
   }
 
   public void doPost(HttpServletRequest req, HttpServletResponse res)
