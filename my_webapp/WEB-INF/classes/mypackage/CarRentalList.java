@@ -28,7 +28,7 @@ public class CarRentalList extends HttpServlet {
 
     JSONParser parser = new JSONParser();
     JSONObject obj = null;
-    if (nombre.equals("pti")) and password.equals("pti")){
+    if (nombre.equals("pti") && password.equals("pti")){
       try {
         Object obj2 = parser.parse(new FileReader("./test.json"));
            obj = (JSONObject) obj2;
